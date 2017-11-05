@@ -1,5 +1,5 @@
 # statisfy
-### [http://statsify.me](http://statsify.me)
+### [http://statsify.me](http://statsify.me) (Site currently NOT live)
 Dependent on flask, json and spotipy.
 
 `python statsify.py` to run.
