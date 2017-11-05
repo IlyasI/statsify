@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block pagename %}
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<a class="btn btn-primary js-scroll-trigger" href="#long-term">All Time</a>
+		<a class="btn btn-primary js-scroll-trigger" href="#med-term">6 Months</a>
+		<a class="btn btn-primary js-scroll-trigger" href="#short-term">4 Weeks</a>
+	</div>
+	<h1 class="text-center">Your Top Tracks</h1>
+{% endblock %}
+{% block data %}
+<section id="long-term">
+	<h1 class="text-center">of All Time.</h1>
+  	<table class="table table-striped table-dark font-weight-bold">
+			<thread>
+				<tr>
+					<th scope="col">Song</th>
+					<th scope="col">Artist</th>
+					<th scope="col">Album</th>
+					<th scope="col">Explicit?</th>
+					<th scope="col">Popularity</th>
+					<th scope="col">Album Art</th>
+				</tr>
+			</thread>
+			<tbody>
+				{% for item in top_tracks_long %}
+				<tr>
+					<th scope="row"><a href="https://open.spotify.com/track/{{ item.id }}">{{ item.name }}</th>
+					<td><a href="https://open.spotify.com/artist/{{ item.artist_id }}">{{ item.artist_name }}</a></td>
+				  <td><a href="https://open.spotify.com/album/{{ item.album_id }}">{{ item.album_name }}</a></td>
+					<td>{{ item.explicit }}</td>
+					<td>{{ item.popularity }}</td>
+					{% if item.album_images %}
+						<td><a href="https://open.spotify.com/album/{{ item.album_id }}"><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></a></td>
+					{% endif %}
+				</tr>
+      	{% endfor %}
+			</tbody>
+		</table>
+</section>
+<section id="med-term">
+	<h1 class="text-center">Over the Past Six Months.</h1>
+  	<table class="table table-striped table-dark">
+			<thread>
+				<tr>
+					<th scope="col">Song</th>
+					<th scope="col">Artist</th>
+					<th scope="col">Album</th>
+					<th scope="col">Explicit?</th>
+					<th scope="col">Popularity</th>
+					<th scope="col">Album Art</th>
+				</tr>
+			</thread>
+			<tbody>
+				{% for item in top_tracks_med %}
+				<tr>
+					<th scope="row">{{ item.name }}</th>
+					<td>{{ item.artist_name }}</td>
+				  <td>{{ item.album_name }}</td>
+					<td>{{ item.explicit }}</td>
+					<td>{{ item.popularity }}</td>
+					{% if item.album_images %}
+						<td><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></td>
+					{% endif %}
+				</tr>
+      	{% endfor %}
+			</tbody>
+		</table>
+</section>
+<section id="short-term">
+	<h1 class="text-center">Over the Past Four Weeks.</h1>
+  	<table class="table table-striped table-dark">
+			<thread>
+				<tr>
+					<th scope="col">Song</th>
+					<th scope="col">Artist</th>
+					<th scope="col">Album</th>
+					<th scope="col">Explicit?</th>
+					<th scope="col">Popularity</th>
+					<th scope="col">Album Art</th>
+				</tr>
+			</thread>
+			<tbody>
+				{% for item in top_tracks_short %}
+				<tr>
+					<th scope="row">{{ item.name }}</th>
+					<td>{{ item.artist_name }}</td>
+				  <td>{{ item.album_name }}</td>
+					<td>{{ item.explicit }}</td>
+					<td>{{ item.popularity }}</td>
+					{% if item.album_images %}
+						<td><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></td>
+					{% endif %}
+				</tr>
+      	{% endfor %}
+			</tbody>
+		</table>
+</section>
+{% endblock %}

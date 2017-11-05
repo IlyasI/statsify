@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block pagename %}
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<a class="btn btn-primary js-scroll-trigger" href="#long-term">All Time</a>
+		<a class="btn btn-primary js-scroll-trigger" href="#med-term">6 Months</a>
+		<a class="btn btn-primary js-scroll-trigger" href="#short-term">4 Weeks</a>
+	</div>
+	<h1 class="text-center">Your Top Artists</h1>
+{% endblock %}
+{% block data %}
+<section id="long-term">
+	<h1 class="text-center">of All Time.</h1>
+  	<div class="container">
+			<div class="grid">
+				<div class="grid-sizer"></div>
+      	{% for item in top_artists_long %}
+      		<div class="grid-item">
+        		{% if item.images %}
+            	<a href="https://open.spotify.com/artist/{{ item.id }}">
+				        	<img src="{{ item.images[0].url }}" class="img-responsive" alt="Artist Pic">
+                	<h3>{{ item.name }}</h3>
+									<h5>Popularity: {{ item.popularity }}</h5>
+            	</a>
+        		{% endif %}
+      		</div>
+      	{% endfor %}
+			</div>
+		</div>
+</section>
+<section id="med-term">
+	<h1 class="text-center">Over the Last Six Months.</h1>
+	  <div class="container">
+		  <div class="grid">
+			  <div class="grid-sizer"></div>
+			  {% for item in top_artists_med %}
+				  <div class="grid-item">
+				  	{% if item.images %}
+					  	<a href="https://open.spotify.com/artist/{{ item.id }}">
+						  		<img src="{{ item.images[0].url }}" class="img-responsive" alt="Artist Pic">
+						  		<h3>{{ item.name }}</h3>
+									<h5>Popularity: {{ item.popularity }}</h5>
+						  </a>
+					  {% endif %}
+				  </div>
+			  {% endfor %}
+		  </div>
+	  </div>
+</section>
+<section id="short-term">
+	<h1 class="text-center">Over the Last Four Weeks.</h1>
+		<div class="container">
+			<div class="grid">
+		    <div class="grid-sizer"></div>
+			  {% for item in top_artists_short %}
+				  <div class="grid-item">
+					 	{% if item.images %}
+					  	<a href="https://open.spotify.com/artist/{{ item.id }}">
+						  		<img src="{{ item.images[0].url }}" class="img-responsive" alt="Artist Pic">
+						  		<h3>{{ item.name }}</h3>
+									<h5>Popularity: {{ item.popularity }}</h5>
+						  </a>
+					  {% endif %}
+				  </div>
+			  {% endfor %}
+		  </div>
+	  </div>
+</section>
+{% endblock %}

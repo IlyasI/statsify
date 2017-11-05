@@ -1,0 +1,137 @@
+h3 {
+  color: green;
+}
+.navbar-brand {
+    font-size: 30px;
+    color: white;
+    margin: 0 50px;
+}
+
+.nav-link {
+    font-size: 20px;
+    color: #abacad;
+    margin: 0 10px;
+}
+
+.grid {
+    margin: 50px auto;
+    padding: 30px;
+    -moz-column-gap: 1.5em;
+    -webkit-column-gap: 1.5em;
+    column-gap: 1.5em;
+    font-size: .85em;
+    background: #DDD;
+}
+
+.grid-item {
+    background: #fff;
+    padding: 1em;
+    margin: 0 0 1.5em;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-shadow: 4px 4px 4px 4px #ccc;
+    max-width: 300px;
+}
+
+@media only screen and (min-width: 400px) {
+    .grid {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .grid {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .grid {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .grid {
+        -moz-column-count: 5;
+        -webkit-column-count: 5;
+        column-count: 5;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .container {
+        width: 1260px;
+    }
+}
+
+/**
+ * Elevator - Scroll back to top utility CSS
+ */
+.elevator {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  visibility: hidden;
+  background: rgba(0, 0, 0, .7);
+  background-image: none;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+          box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+  opacity: 0;
+  -webkit-transition: all .3s ease;
+       -o-transition: all .3s ease;
+          transition: all .3s ease;
+}
+.elevator.elevator-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+  z-index: 999;
+}
+.elevator .fa {
+  position: relative;
+  top: 12.5px;
+  left: 14.5px;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  color: white;
+  -webkit-transition: all .3s ease;
+       -o-transition: all .3s ease;
+          transition: all .3s ease;
+}
+.elevator:hover {
+  background: rgba(0, 0, 0, .8);
+}
+.elevator:hover .fa {
+  top: 5px;
+  color: white;
+}
+@media (max-width: 768px) {
+  .elevator {
+    /* only show elevator on desktop screen */
+    display: none !important;
+  }
+}
+section {
+  padding: 0 0;
+}
+.album-art {
+  max-width: 100px;
+}
