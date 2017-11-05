@@ -7,16 +7,15 @@ import spotipy
 import spotipy.oauth2
 
 app = Flask(__name__)
-app.secret_key = "123asff8uoi13221edszc323rthtr43"
+app.secret_key = "YOUR OWN SECRET KEY HERE"
 bootstrap = Bootstrap(app)
 
 # Flask Parameters
 CLIENT_SIDE_URL = "http://127.0.0.1"
 PORT = 8000
 REDIRECT_URI = "{}:{}/topartists".format(CLIENT_SIDE_URL, PORT)
-SCOPE = ("playlist-modify-public playlist-modify-private "
-         "playlist-read-collaborative playlist-read-private "
-         "user-top-read")
+
+SCOPE = ("user-top-read")
 
 TEMPLATES_AUTO_RELOAD = True
 SEND_FILE_MAX_AGE_DEFAULT = 0
@@ -76,10 +75,6 @@ def get_spotify(auth_token=None):
     return spotipy.Spotify(auth=token_info["access_token"])
 
 def get_prefs():
-    """Get application prefs plist and set secret key.
-    Args:
-        path: String path to a plist file.
-    """
     with open("config.json") as prefs_file:
         prefs = json.load(prefs_file)
 
