@@ -2,8 +2,8 @@
 
 [http://statsify.me](http://statsify.me) (Site currently NOT live)
 ---
-Dependent on flask and spotipy.
-```pip install spotipy flask```
+Dependent on flask, flask-bootstrap, and spotipy.
+```pip install spotipy flask flask-bootstrap```
 
 change *YOUR OWN SECRET KEY HERE* in line 10: `app.secret_key = "YOUR OWN SECRET KEY HERE"` to a secret key of your choosing.
 
