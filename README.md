@@ -7,6 +7,7 @@ change *YOUR OWN SECRET KEY HERE* in line 10: `app.secret_key = "YOUR OWN SECRET
 
 `python statsify.py` to run.
 
+___
 Built with [Flask](http://flask.pocoo.org/) and [Spotipy]() the [Spotify web-API](https://developer.spotify.com/web-api/) Python wrapper.
 
 [Flask Bootstrap](https://pythonhosted.org/Flask-Bootstrap/) used to achieve [Bootstrap 4](http://getbootstrap.com/) design elements and tools.
