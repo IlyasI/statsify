@@ -2,7 +2,7 @@
 ### [http://statsify.me](http://statsify.me)
 Dependent on flask, json and spotipy.
 
-'python statsify.py' to run.
+'''python statsify.py''' to run.
 
 Built with [Flask](http://flask.pocoo.org/) and [Spotipy]() the [Spotify web-API](https://developer.spotify.com/web-api/) Python wrapper.
 [Flask Bootstrap](https://pythonhosted.org/Flask-Bootstrap/) used to use [Bootstrap 4](http://getbootstrap.com/) design elements and tools.
