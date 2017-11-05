@@ -1,8 +1,7 @@
 import json
 
-from flask import (Flask, request, redirect, render_template, url_for, session)
+from flask import (Flask, request, redirect, render_template, session)
 from flask.ext.bootstrap import Bootstrap
-from flask.ext.wtf import Form
 import spotipy
 import spotipy.oauth2
 
@@ -14,9 +13,7 @@ bootstrap = Bootstrap(app)
 CLIENT_SIDE_URL = "http://127.0.0.1"
 PORT = 8000
 REDIRECT_URI = "{}:{}/topartists".format(CLIENT_SIDE_URL, PORT)
-SCOPE = ("playlist-modify-public playlist-modify-private "
-         "playlist-read-collaborative playlist-read-private "
-         "user-top-read")
+SCOPE = ("user-top-read")
 
 TEMPLATES_AUTO_RELOAD = True
 SEND_FILE_MAX_AGE_DEFAULT = 0
@@ -70,9 +67,8 @@ def get_oauth():
 def get_spotify(auth_token=None):
     """Return an authenticated Spotify object."""
     oauth = get_oauth()
-    token_info = oauth.get_cached_token()
-    if not token_info and auth_token:
-        token_info = oauth.get_access_token(auth_token)
+    token_info = oauth.get_access_token(auth_token)
+    
     return spotipy.Spotify(auth=token_info["access_token"])
 
 def get_prefs():
