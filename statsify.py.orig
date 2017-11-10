@@ -1,13 +1,11 @@
 import json
 
-from flask import Flask, request, redirect, render_template, session
+from flask import (Flask, request, redirect, render_template, session)
 from flask.ext.bootstrap import Bootstrap
-
 import spotipy
 import spotipy.oauth2
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 app.secret_key = "YOUR OWN SECRET KEY HERE"
 bootstrap = Bootstrap(app)
 
@@ -15,11 +13,14 @@ bootstrap = Bootstrap(app)
 CLIENT_SIDE_URL = "http://127.0.0.1"
 PORT = 8000
 REDIRECT_URI = "{}:{}/topartists".format(CLIENT_SIDE_URL, PORT)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2badbd5b46ca6e4c321e5400147db5ce2921e01d
 SCOPE = ("user-top-read")
 
 TEMPLATES_AUTO_RELOAD = True
 SEND_FILE_MAX_AGE_DEFAULT = 0
-
 
 @app.route("/")
 def index():
@@ -70,10 +71,9 @@ def get_oauth():
 def get_spotify(auth_token=None):
     """Return an authenticated Spotify object."""
     oauth = get_oauth()
-    token_info = oauth.get_cached_token()
-    if not token_info and auth_token:
-        token_info = oauth.get_access_token(auth_token)
-    return spotipy.Spotify(token_info["access_token"])
+    token_info = oauth.get_access_token(auth_token)
+    
+    return spotipy.Spotify(auth=token_info["access_token"])
 
 def get_prefs():
     with open("config.json") as prefs_file:
@@ -157,21 +157,21 @@ def get_user_top_artists(limit=50, time_range='medium_term'):
 def get_user_top_tracks(limit=50, time_range='medium_term'):
     sp = get_spotify()
     sp.trace = False
-    session['user_id'] = sp.current_user()["id"]
-    session['results'] = sp.current_user_top_tracks(offset = 0, limit = limit, time_range = time_range)
+    user_id = sp.current_user()["id"]
+    results = sp.current_user_top_tracks(offset = 0, limit = limit, time_range = time_range)
 
-    tracks = session['results']["items"]
+    tracks = results["items"]
     #commented out as it was affecting performance. For some reason spotify returns a whole lot more for medium-term
     #while results["next"]:
     #    results = sp.next(results)
     #    tracks.extend(results["items"])
 
-    session['track_names'] = [{"id": track["id"], "name": track["name"], "popularity": track["popularity"],
+    track_names = [{"id": track["id"], "name": track["name"], "popularity": track["popularity"],
                     "album_images": track["album"]["images"], "album_name": track["album"]["name"],
                     "explicit": track["explicit"], "artist_name": track["artists"][0]["name"],
                     "artist_id": track["artists"][0]["id"], "album_id": track["album"]["id"]} for track in tracks]
 
-    return session['track_names']
+    return track_names
 
 def get_playlist_id_by_name(name):
     """Return the id for a playlist with name: 'name'."""
