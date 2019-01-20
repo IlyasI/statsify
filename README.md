@@ -21,6 +21,11 @@ Step 2: create config.json based on config_example.json in the main statsify dir
 
 Step 3: `python statsify.py` to run. The site will be hosted locally at 127.0.0.1:8000. On the first visit you will be prompted to login through Spotify Oauth.
 
+Screenshots:
+---
+![Statsify Screenshot 1](https://github.com/IlyasI/statsify/blob/master/screenshots/screen1.jpg)
+![Statsify Screenshot 2](https://github.com/IlyasI/statsify/blob/master/screenshots/screen2.jpg)
+
 ___
 Built with [Flask](http://flask.pocoo.org/) and [Spotipy]() the [Spotify web-API](https://developer.spotify.com/web-api/) Python wrapper.
 
