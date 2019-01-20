@@ -1,13 +1,21 @@
 # Statisfy
 
-[http://statsify.me](http://statsify.me) (Site currently NOT live)
+Flask and bootstrap based site that displays your top Spotify artists and tracks in a pretty mosiac. Time ranges include over all time, 6 months, and 1 month.
+
+Instructions to run:
 ---
-Dependent on flask, flask-bootstrap, and spotipy.
-```pip install spotipy flask flask-bootstrap```
+Step 1: Statsify is dependent on flask, flask-bootstrap, spotipy, and appdirs:
+```pip install spotipy flask flask-bootstrap appdirs```
 
-change *YOUR OWN SECRET KEY HERE* in line 10: `app.secret_key = "YOUR OWN SECRET KEY HERE"` to a secret key of your choosing.
+Step 2: create config.json based on config_example.json in the main statsify directory, where 'ClientSecret' and 'ClientID' are obtained from https://developer.spotify.com/dashboard/applications. You must make a new application and put the client id and client secret within the parenthesis of the file. The 'SecretKey' field should then be set to a random string of your choosing.
 
-`python statsify.py` to run.
+{
+	"ClientSecret": "12345678910", 
+	"ClientID": "12345678910",
+	"SecretKey": "You can set this to whatever you want."
+}
+
+Step 3: `python statsify.py` to run. The site will be hosted locally at 127.0.0.1:8000. On the first visit you will be prompted to login through Spotify Oauth.
 
 ___
 Built with [Flask](http://flask.pocoo.org/) and [Spotipy]() the [Spotify web-API](https://developer.spotify.com/web-api/) Python wrapper.
@@ -16,8 +24,3 @@ Built with [Flask](http://flask.pocoo.org/) and [Spotipy]() the [Spotify web-API
 
 [Masonry](https://masonry.desandro.com/) used to achieve responsive image panels.
 
-
-### To Do:
-- Fix hiding top album images until masonry layout loaded
-- Add page for raw data downloads (CSV with all top tracks/artists data)
-- Add saving top tracks to a playlist(in progress)
