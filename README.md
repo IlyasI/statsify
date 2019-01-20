@@ -1,6 +1,6 @@
 # Statisfy
 
-Flask and bootstrap based site that displays your top Spotify artists and tracks in a pretty mosiac. Time ranges include over all time, 6 months, and 1 month.
+Responsive Flask and Bootstrap built site that displays your top Spotify artists and tracks in a pretty mosiac. Time ranges include over all time, 6 months, and 1 month.
 
 Instructions to run:
 ---
