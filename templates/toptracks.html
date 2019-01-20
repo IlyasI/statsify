@@ -26,14 +26,14 @@
 				<tr>
 					<th scope="row"><a href="https://open.spotify.com/track/{{ item.id }}">{{ item.name }}</th>
 					<td><a href="https://open.spotify.com/artist/{{ item.artist_id }}">{{ item.artist_name }}</a></td>
-				  <td><a href="https://open.spotify.com/album/{{ item.album_id }}">{{ item.album_name }}</a></td>
+				    <td><a href="https://open.spotify.com/album/{{ item.album_id }}">{{ item.album_name }}</a></td>
 					<td>{{ item.explicit }}</td>
 					<td>{{ item.popularity }}</td>
 					{% if item.album_images %}
 						<td><a href="https://open.spotify.com/album/{{ item.album_id }}"><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></a></td>
 					{% endif %}
 				</tr>
-      	{% endfor %}
+      	        {% endfor %}
 			</tbody>
 		</table>
 </section>
@@ -53,16 +53,16 @@
 			<tbody>
 				{% for item in top_tracks_med %}
 				<tr>
-					<th scope="row">{{ item.name }}</th>
-					<td>{{ item.artist_name }}</td>
-				  <td>{{ item.album_name }}</td>
+					<th scope="row"><a href="https://open.spotify.com/track/{{ item.id }}">{{ item.name }}</th>
+					<td><a href="https://open.spotify.com/artist/{{ item.artist_id }}">{{ item.artist_name }}</a></td>
+				    <td><a href="https://open.spotify.com/album/{{ item.album_id }}">{{ item.album_name }}</a></td>
 					<td>{{ item.explicit }}</td>
 					<td>{{ item.popularity }}</td>
 					{% if item.album_images %}
-						<td><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></td>
+						<td><a href="https://open.spotify.com/album/{{ item.album_id }}"><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></a></td>
 					{% endif %}
 				</tr>
-      	{% endfor %}
+      	        {% endfor %}
 			</tbody>
 		</table>
 </section>
@@ -82,16 +82,16 @@
 			<tbody>
 				{% for item in top_tracks_short %}
 				<tr>
-					<th scope="row">{{ item.name }}</th>
-					<td>{{ item.artist_name }}</td>
-				  <td>{{ item.album_name }}</td>
+					<th scope="row"><a href="https://open.spotify.com/track/{{ item.id }}">{{ item.name }}</th>
+					<td><a href="https://open.spotify.com/artist/{{ item.artist_id }}">{{ item.artist_name }}</a></td>
+					<td><a href="https://open.spotify.com/album/{{ item.album_id }}">{{ item.album_name }}</a></td>
 					<td>{{ item.explicit }}</td>
 					<td>{{ item.popularity }}</td>
 					{% if item.album_images %}
-						<td><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></td>
+						<td><a href="https://open.spotify.com/album/{{ item.album_id }}"><img src="{{ item.album_images[0].url }}" class="img-responsive album-art" alt="Album Pic"></a></td>
 					{% endif %}
 				</tr>
-      	{% endfor %}
+      	        {% endfor %}
 			</tbody>
 		</table>
 </section>

@@ -1,10 +1,12 @@
 import json
+import os
 
 from flask import Flask, request, redirect, render_template, session
-from flask.ext.bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 
 import spotipy
 import spotipy.oauth2
+from appdirs import user_cache_dir
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
@@ -33,7 +35,6 @@ def display_top_tracks():
         get_spotify(request.args["code"])
 
     """render users top tracks"""
-    #playlist_url = make_top_playlist()
     top_tracks_short = get_user_top_tracks(time_range='short_term')
     top_tracks_med = get_user_top_tracks(time_range='medium_term')
     top_tracks_long = get_user_top_tracks(time_range='long_term')
@@ -63,9 +64,13 @@ def display_top_artists():
 def get_oauth():
     """Return a Spotipy Oauth2 object."""
     prefs = get_prefs()
+    cache_dir = user_cache_dir(appname='statsify')
+    if not os.path.isdir(cache_dir):
+        os.makedirs(cache_dir)
+    cache_path = os.path.join(cache_dir, 'cache')
     return spotipy.oauth2.SpotifyOAuth(
         prefs["ClientID"], prefs["ClientSecret"], REDIRECT_URI, scope=SCOPE,
-        cache_path=".tokens")
+        cache_path=cache_path)
 
 def get_spotify(auth_token=None):
     """Return an authenticated Spotify object."""
@@ -101,42 +106,6 @@ def get_user_playlists():
 
     return playlist_names
 
-#BROKEN
-# def make_top_playlist(time_range='medium_term'):
-#     sp = get_spotify()
-#     sp.trace = False
-#     user_id = sp.current_user()["id"]
-#     results = sp.current_user_top_tracks(offset = 0, limit = 50, time_range = time_range)
-#     tracks = results["items"]
-#     new_playlist_name = "My Top Tracks"
-#     sp.user_playlist_create(user_id, new_playlist_name)
-#     new_playlist_id = get_playlist_id_by_name(new_playlist_name)
-#     while results["next"]:
-#         results = sp.next(results)
-#         tracks.extend(results["items"])
-#
-#     track_ids = [track["id"] for track in tracks]
-#
-#     for ids in track_ids:
-#         sp.user_playlist_add_tracks(user_id, new_playlist_id, ids)
-#     playlist_url = sp.user_playlist(user_id, new_playlist_id)["external_urls"]["spotify"]
-#     return playlist_url
-
-#BROKEN
-# def get_user_recently_played(limit=50):
-#     sp = get_spotify()
-#     sp.trace = False
-#     user_id = sp.current_user()["id"]
-#     results = sp.current_user_recently_played(limit)
-#
-#     recent_tracks = results["items"]
-#     while results["next"]:
-#         results = sp.next(results)
-#         recent_tracks.extend(results["items"])
-#
-#     recent_tracks = [{"played_at": track["played_at"], "id": track["track"]["id"],
-#                       "name": track["track"]["name"], "artists": track["track"]["artists"] for track in recent_tracks}]
-
 def get_user_top_artists(limit=50, time_range='medium_term'):
     sp = get_spotify()
     sp.trace = False
@@ -161,10 +130,6 @@ def get_user_top_tracks(limit=50, time_range='medium_term'):
     session['results'] = sp.current_user_top_tracks(offset = 0, limit = limit, time_range = time_range)
 
     tracks = session['results']["items"]
-    #commented out as it was affecting performance. For some reason spotify returns a whole lot more for medium-term
-    #while results["next"]:
-    #    results = sp.next(results)
-    #    tracks.extend(results["items"])
 
     session['track_names'] = [{"id": track["id"], "name": track["name"], "popularity": track["popularity"],
                     "album_images": track["album"]["images"], "album_name": track["album"]["name"],

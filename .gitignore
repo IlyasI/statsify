@@ -1,3 +1,5 @@
 config.json
 .tokens
 venv
+.vscode/
+statsify.py.orig

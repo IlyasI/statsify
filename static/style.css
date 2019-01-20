@@ -21,6 +21,15 @@ h3 {
     column-gap: 1.5em;
     font-size: .85em;
     background: #DDD;
+    text-align:center;
+    -moz-column-count: 5;
+    -webkit-column-count: 5;
+    column-count: 5;
+    width:auto;
+}
+
+.container {
+    width: auto;
 }
 
 .grid-item {
@@ -35,7 +44,7 @@ h3 {
     max-width: 300px;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (max-width: 400px) {
     .grid {
         -moz-column-count: 2;
         -webkit-column-count: 2;
@@ -43,7 +52,7 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 700px) {
     .grid {
         -moz-column-count: 3;
         -webkit-column-count: 3;
@@ -51,7 +60,7 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (max-width: 900px) {
     .grid {
         -moz-column-count: 4;
         -webkit-column-count: 4;
@@ -59,7 +68,7 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 1100px) {
+@media only screen and (max-width: 1100px) {
     .grid {
         -moz-column-count: 5;
         -webkit-column-count: 5;
@@ -67,11 +76,6 @@ h3 {
     }
 }
 
-@media only screen and (min-width: 1280px) {
-    .container {
-        width: 1260px;
-    }
-}
 
 /**
  * Elevator - Scroll back to top utility CSS
