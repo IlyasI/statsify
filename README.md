@@ -24,7 +24,7 @@ Step 3: `python statsify.py` to run. The site will be hosted locally at 127.0.0.
 Screenshots:
 ---
 ![Statsify Screenshot 1](https://github.com/IlyasI/statsify/blob/master/screenshots/screen1.jpg)
-![Statsify Screenshot 2](https://github.com/IlyasI/statsify/blob/master/screenshots/screen2.jpg)
+![Statsify Screenshot 2](https://github.com/IlyasI/statsify/blob/master/screenshots/screen2.png)
 
 ___
 Built with [Flask](http://flask.pocoo.org/) and [Spotipy]() the [Spotify web-API](https://developer.spotify.com/web-api/) Python wrapper.
