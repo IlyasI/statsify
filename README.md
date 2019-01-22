@@ -23,6 +23,9 @@ Step 3: `python statsify.py` to run. The site will be hosted locally at 127.0.0.
 
 Screenshots:
 ---
+![Statsify Screenshot 3](https://github.com/IlyasI/statsify/blob/master/screenshots/screen3.jpg)
+
+---
 ![Statsify Screenshot 1](https://github.com/IlyasI/statsify/blob/master/screenshots/screen1.jpg)
 
 ---
